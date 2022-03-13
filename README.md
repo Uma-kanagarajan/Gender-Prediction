@@ -2,37 +2,34 @@
 
 #### Build a machine learning model to predict the gender based on user given names.
 
-Install all the necessary packages mentioned in the requirement.txt file
+> **Dataset:** Given CSV file contains names and its respective gender.
 
-Check the given dataset
+> **Project Objective:** Develop a model to predict the gender of a user given names.
 
-Load the dataset
+> **Project Approach:** Given name is tokenized into characters and fed into a neural network that gives the output of gender probability. Gender is predicted based on the probability threshold value of 0.5.
 
-Preprocess the dataset using preprocess_name function which takes names as input and converts it into an array using below steps.
-1. Removes non-alphabetical characters and spaces from the given input name.
-2. Then tokenize each characters of the name into a vector and converts it into an integer
-3. Given name length gets changed to a fixed length of 20 with the help of post padded sequence
+> **Files Provided:**
+  1. Requirements.txt file
+  2. name_gender_prediction.ipynb file and the same in python file as name_gender_prediction.py (These files generate only base model)
+  3. name_gender_prediction_keras_tuner.ipynb file and the same in python file as name_gender_prediction_keras_tuner.py (These files generate base model and hyperparameter tuned model)
+  4. gender_predict_app.py (For web app)
+  5. gender_prediction.h5 (my trained model)
 
-Label the gender column of input dataset into binary values. '0' for female and '1' for male
+> **Gender prediction Web app link**
+Please click the provided [gender prediction webapp link](https://name-gender-prediction.herokuapp.com/). This web app is developed using python streamlit package and deployed in heroku.
 
-Split the dataset into training set and test set
+> **Procedures to be followed to run this project**
+1. Ensure all the files are downloaded and saved in the same directory
+2. Open *name_gender_prediction.ipynb* to run it in colab.This file will generate a trained model.
+3. Open *name_gender_prediction.py* in your IDE if you prefer to run it locally.
+4. Ensure all the necessary packages are installed as stated in requirements.txt
+5. Open *gender_predict_app.py* and run it with a terminal command 'streamlit run gender_predict_app.py' to get a localhost web page.
 
-Base model creation
-LSTM model is used with
-1. Input dimension as 28(Total number of alphabets + 1)
-2. Output dimension as 28.
-3. Name length is fixed to 20
-4. callback is used for early stop
-5. Fit and save the model
-6. Visualize the model accuracy for test and validation dataset
+> **Note:**
+Hyperparameter tuner code is provided but due to limits of GPU, code got stopped after 300 iterations and hence i didn't get hyperparameter tuned model and its respective parameters. Due to this issue, I have provided separate .ipynb and .py files for base model and tuner model.
 
-Model is defined using sequential API with the layers such as Embedding, LSTM, Dropout, Dense and a final dense output layer.
-Adam optimizer, Binary crosentropy are considered.
-
-Evaluate the model using test set
-
-Predict the gender by getting input from the user
-
-Hyperparameter tuner using keras tuner
-
-
+> **Conclusion:**  
+> *Base model metrics*  
+>  Training accuracy: 90%   
+>  Testing accuracy: 89%  
+>  This is the highest evaluation metrics that I have achieved for base model without overfitting the data.
